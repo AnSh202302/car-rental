@@ -10,14 +10,18 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/car-rental" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="catalog" element={<Catalog />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="*" element={<Home />} />
-        </Route>
-      </Routes>
+      <main>
+        <section style={{ padding: 40 }}>
+          <Routes>
+            <Route path="/car-rental" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="catalog" element={<Catalog />} />
+              <Route path="favorites" element={<Favorites />} />
+              <Route path="*" element={<Home />} />
+            </Route>
+          </Routes>
+        </section>
+      </main>
     </>
   );
 }

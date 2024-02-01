@@ -9,10 +9,10 @@ const Header = () => {
           <MenuItem component={NavLink} to="/car-rental/" end>
             Home
           </MenuItem>
-          <MenuItem component={NavLink} to="car-rental/catalog">
+          <MenuItem component={NavLink} to="/car-rental/catalog">
             Catalog
           </MenuItem>
-          <MenuItem component={NavLink} to="car-rental/favorites">
+          <MenuItem component={NavLink} to="/car-rental/favorites">
             Favorites
           </MenuItem>
         </MenuList>

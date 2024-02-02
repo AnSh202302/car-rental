@@ -5,7 +5,7 @@ const initialState = {
     error: null,
   },
   favorites: [],
-  filter: "",
+  selected: "",
 };
 
 export default initialState;

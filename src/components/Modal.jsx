@@ -26,7 +26,6 @@ const CarModal = ({ open, handleClose, selectedCar }) => {
       <Box sx={style}>
         <ModalClose onClick={handleClose} />
         {selectedCar && <CarCard items={selectedCar} />}
-        {console.log("itemModal", selectedCar)}
       </Box>
     </Modal>
   );

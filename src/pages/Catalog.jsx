@@ -5,14 +5,21 @@ import CarModal from "../components/Modal";
 // import { getError, getIsLoading } from "../redux/selectors";
 import { Button } from "@mui/material";
 import CarCard from "../components/CarCard";
+import Dropdown from "../components/Dropdown";
 
 const Catalog = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cars.items);
+  const selected = useSelector((state) => state.selected);
 
+  const filteredCars = selected
+    ? items.filter((item) => item.make === selected)
+    : items;
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
 
+  const [open, setOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
 
@@ -20,8 +27,6 @@ const Catalog = () => {
     dispatch(getItems({ currentPage, limit }));
   }, [dispatch, currentPage]);
 
-  const [open, setOpen] = useState(false);
-  const [selectedCar, setSelectedCar] = useState(null);
   const handleOpen = (car) => {
     setSelectedCar([car]);
     setOpen(true);
@@ -37,7 +42,10 @@ const Catalog = () => {
         handleClose={handleClose}
         selectedCar={selectedCar}
       />
-      <CarCard handleOpen={handleOpen} items={items} />
+
+      <Dropdown />
+
+      {filteredCars && <CarCard handleOpen={handleOpen} items={filteredCars} />}
       {currentPage > 1 && (
         <Button onClick={() => setCurrentPage(currentPage - 1)}>Back</Button>
       )}

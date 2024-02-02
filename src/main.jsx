@@ -9,7 +9,7 @@ import { CssBaseline } from "@mui/material";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/car-rental">
+    <BrowserRouter basename="/car-rental/">
       <Provider store={store}>
         <CssBaseline />
         <App />

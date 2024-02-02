@@ -1,22 +1,21 @@
 import { AppBar, MenuItem, MenuList, Toolbar } from "@mui/material";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
         <MenuList style={{ display: "flex" }}>
-          <MenuItem component={NavLink} to="/" end>
+          <MenuItem component={Link} to="/" end>
             Home
           </MenuItem>
-          <MenuItem component={NavLink} to="catalog">
+          <MenuItem component={Link} to="catalog">
             Catalog
           </MenuItem>
-          <MenuItem component={NavLink} to="favorites">
+          <MenuItem component={Link} to="favorites">
             Favorites
           </MenuItem>
         </MenuList>
-        <Outlet />
         {/* <nav style={{ display: "flex", gap: 20 }}>
           <NavLink to="/car-rental/" end>
             Home

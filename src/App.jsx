@@ -13,7 +13,7 @@ function App() {
       <main>
         <section style={{ padding: 40 }}>
           <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path="/car-rental/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="catalog" element={<Catalog />} />
               <Route path="favorites" element={<Favorites />} />

@@ -6,13 +6,13 @@ const Header = () => {
     <AppBar position="static">
       <Toolbar>
         <MenuList style={{ display: "flex" }}>
-          <MenuItem component={NavLink} to="/" end>
+          <MenuItem component={NavLink} to="/car-rental/" end>
             Home
           </MenuItem>
-          <MenuItem component={NavLink} to="/catalog">
+          <MenuItem component={NavLink} to="/car-rental/catalog">
             Catalog
           </MenuItem>
-          <MenuItem component={NavLink} to="/favorites">
+          <MenuItem component={NavLink} to="/car-rental/catalog">
             Favorites
           </MenuItem>
         </MenuList>

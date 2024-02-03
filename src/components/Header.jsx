@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <MenuList style={{ display: "flex" }}>
           <MenuItem component={Link} to="/" end="true">

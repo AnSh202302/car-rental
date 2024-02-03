@@ -16,13 +16,6 @@ const Header = () => {
             Favorites
           </MenuItem>
         </MenuList>
-        {/* <nav style={{ display: "flex", gap: 20 }}>
-          <NavLink to="/car-rental/" end>
-            Home
-          </NavLink>
-          <NavLink to="car-rental/catalog">Catalog</NavLink>
-          <NavLink to="car-rental/favorites">Favorites</NavLink>
-        </nav> */}
       </Toolbar>
     </AppBar>
   );

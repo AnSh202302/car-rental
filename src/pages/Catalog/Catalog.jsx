@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getItems } from "../redux/cars/operations";
-import CarModal from "../components/Modal";
+import { getItems } from "../../redux/cars/operations";
+import CarModal from "../../components/Modal";
 // import { getError, getIsLoading } from "../redux/selectors";
 import { Button } from "@mui/material";
-import CarCard from "../components/CarCard";
-import Dropdown from "../components/Dropdown";
+import CarCard from "../../components/CarCard";
+import Dropdown from "../../components/Dropdown";
+import { CatalogSection } from "./Catalog.Styled";
 
 const Catalog = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cars.items);
   const selected = useSelector((state) => state.selected);
 
-  const filteredCars = selected
-    ? items.filter((item) => item.make === selected)
-    : items;
+  const filteredCars =
+    selected === "Car brand" || !selected
+      ? items
+      : items.filter((item) => item.make === selected);
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
 
@@ -36,25 +38,36 @@ const Catalog = () => {
     setOpen(false);
   };
   return (
-    <>
+    <CatalogSection>
+      <Dropdown />
+      {filteredCars && <CarCard handleOpen={handleOpen} items={filteredCars} />}
+      <div>
+        {currentPage > 1 && (
+          <Button
+            variant="outlined"
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            Back
+          </Button>
+        )}
+        {filteredCars.length === limit && (
+          <Button
+            variant="outlined"
+            onClick={() => {
+              setCurrentPage(currentPage + 1);
+              window.scrollTo({ top: 0 });
+            }}
+          >
+            Load More
+          </Button>
+        )}
+      </div>
       <CarModal
         open={open}
         handleClose={handleClose}
         selectedCar={selectedCar}
       />
-
-      <Dropdown />
-
-      {filteredCars && <CarCard handleOpen={handleOpen} items={filteredCars} />}
-      {currentPage > 1 && (
-        <Button onClick={() => setCurrentPage(currentPage - 1)}>Back</Button>
-      )}
-      {items.length === limit && (
-        <Button onClick={() => setCurrentPage(currentPage + 1)}>
-          Load More
-        </Button>
-      )}
-    </>
+    </CatalogSection>
   );
 };
 export default Catalog;

@@ -6,7 +6,7 @@ import CarModal from "../../components/Modal";
 import { Button, Typography } from "@mui/material";
 import CarCard from "../../components/CarCard";
 import Dropdown from "../../components/Dropdown";
-import { CatalogSection, WrapperNotFound } from "./Catalog.Styled";
+import { CatalogSection, WrapperNotFound } from "../Catalog/Catalog.styled";
 
 const Catalog = () => {
   const dispatch = useDispatch();

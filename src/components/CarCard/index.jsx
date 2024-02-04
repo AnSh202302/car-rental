@@ -54,10 +54,10 @@ const CarCard = ({ handleOpen, items, open }) => {
   };
 
   return (
-    <CarCardList>
+    <CarCardList open={open}>
       {items &&
         items.map((item) => (
-          <CardWrapper component="li" key={item.id}>
+          <CardWrapper open={open} component="li" key={item.id}>
             <Button onClick={() => handleFavorites(item)}>
               {!isFavorite(item) ? (
                 <NotFavoriteIcon fontSize="large" />

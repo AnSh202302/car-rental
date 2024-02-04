@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { ModalInfoList } from "./CardInfoModal.styled";
 
 const CardInfo = ({ item }) => {
   const formattedMileage = item.mileage.toLocaleString("en-US");
@@ -9,13 +10,15 @@ const CardInfo = ({ item }) => {
         {item.description}
       </Typography>
       <Typography variant="body2">Accessories and functionalities:</Typography>
-      {item.functionalities.map((func, index) => (
-        <Typography key={index} variant="body2" color="text.secondary">
-          {func}
-        </Typography>
-      ))}
+      <ModalInfoList>
+        {item.functionalities.map((func, index) => (
+          <Typography key={index} variant="body2" color="text.secondary">
+            {func}
+          </Typography>
+        ))}
+      </ModalInfoList>
       <Typography variant="body2">Rental Conditions: </Typography>
-      <ul>
+      <ModalInfoList>
         <Typography component="li" variant="body2" color="text.secondary">
           Minimum age : {new Date().getFullYear() - item.year}
         </Typography>
@@ -31,7 +34,7 @@ const CardInfo = ({ item }) => {
         <Typography component="li" variant="body2" color="text.secondary">
           Price: {item.rentalPrice}
         </Typography>
-      </ul>
+      </ModalInfoList>
     </div>
   );
 };

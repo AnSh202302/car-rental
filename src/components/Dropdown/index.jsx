@@ -3,11 +3,12 @@ import makes from "../../../makes.json";
 import { setSelected } from "../../redux/selected/selectedSlise";
 import { DropdownWrapper } from "./Dropdown.styled";
 
-const Dropdown = () => {
+const Dropdown = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
 
   const handleMakeChange = (event) => {
     dispatch(setSelected(event.target.value));
+    setCurrentPage(1);
   };
 
   return (

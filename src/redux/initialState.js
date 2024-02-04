@@ -1,5 +1,6 @@
 const initialState = {
   cars: {
+    allItems: [],
     items: [],
     isLoading: false,
     error: null,

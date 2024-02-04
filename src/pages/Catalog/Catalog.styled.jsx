@@ -8,3 +8,12 @@ export const CatalogSection = styled("section")({
     gap: 40,
   },
 });
+
+export const WrapperNotFound = styled("div")({
+  maxWidth: 400,
+  margin: "0 auto",
+  textAlign: "center",
+  "& span": {
+    color: "#1976d2",
+  },
+});

@@ -3,22 +3,27 @@ import { Card, CardMedia } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export const CarCardList = styled("ul")({
+export const CarCardList = styled("ul")(({ open }) => ({
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "center",
   gap: 29,
-  paddingBottom: 40,
-});
+  paddingBottom: open || open === undefined ? 0 : 40,
+  "&>li": {
+    overflowY: open || open === undefined ? "auto" : "hidden",
+  },
+}));
 
-export const CardWrapper = styled(Card)({
-  maxWidth: 274,
+export const CardWrapper = styled(Card)(({ open }) => ({
+  maxWidth: open || open === undefined ? 469 : 274,
   position: "relative",
+  maxHeight: 450,
+
   "&>button": {
     position: "absolute",
     right: "0%",
   },
-});
+}));
 
 export const NotFavoriteIcon = styled(FavoriteBorderIcon)({
   color: "#fff",

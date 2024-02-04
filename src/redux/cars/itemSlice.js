@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getItems } from "./operations";
+import { getAllItems, getItems } from "./operations";
 import initialState from "../initialState";
 
 const handlePending = (state) => {
@@ -17,11 +17,20 @@ export const itemsSlice = createSlice({
     builder
       .addCase(getItems.pending, handlePending)
       .addCase(getItems.fulfilled, (state, { payload }) => {
+        console.log("first", state.items);
         state.isLoading = false;
         state.error = null;
         state.items = payload;
       })
-      .addCase(getItems.rejected, handleRejected);
+      .addCase(getItems.rejected, handleRejected)
+      .addCase(getAllItems.pending, handlePending)
+      .addCase(getAllItems.fulfilled, (state, { payload }) => {
+        console.log("first", state.items);
+        state.isLoading = false;
+        state.error = null;
+        state.allItems = payload;
+      })
+      .addCase(getAllItems.rejected, handleRejected);
   },
 });
 export const itemsReducer = itemsSlice.reducer;

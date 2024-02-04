@@ -92,7 +92,11 @@ const CarCard = ({ handleOpen, items, open }) => {
             </CardContentStyled>
             <CardActions>
               {open || open === undefined ? (
-                <Button component="a" href="tel:+380730000000">
+                <Button
+                  component="a"
+                  variant="contained"
+                  href="tel:+380730000000"
+                >
                   Rental car
                 </Button>
               ) : (

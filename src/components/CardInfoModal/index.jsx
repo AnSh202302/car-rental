@@ -4,6 +4,13 @@ import { ModalInfoList } from "./CardInfoModal.styled";
 const CardInfo = ({ item }) => {
   const formattedMileage = item.mileage.toLocaleString("en-US");
 
+  const getFormattedRentalConditions = (rentalConditions) => {
+    const parts = rentalConditions.split("\n");
+    return parts;
+  };
+  const allConditions = getFormattedRentalConditions(item.rentalConditions);
+  console.log(allConditions);
+
   return (
     <div>
       <Typography variant="body2" mb="24px" mt="14px">
@@ -19,15 +26,17 @@ const CardInfo = ({ item }) => {
       </ModalInfoList>
       <Typography variant="body2">Rental Conditions: </Typography>
       <ModalInfoList>
-        <Typography component="li" variant="body2" color="text.secondary">
-          Minimum age : {new Date().getFullYear() - item.year}
-        </Typography>
-        <Typography component="li" variant="body2" color="text.secondary">
-          Minimum age :
-        </Typography>
-        <Typography component="li" variant="body2" color="text.secondary">
-          Minimum age :
-        </Typography>
+        {allConditions.map((condirion) => (
+          <Typography
+            key={condirion.length}
+            component="li"
+            variant="body2"
+            color="text.secondary"
+          >
+            {condirion}
+          </Typography>
+        ))}
+
         <Typography component="li" variant="body2" color="text.secondary">
           Mileage: {formattedMileage}
         </Typography>

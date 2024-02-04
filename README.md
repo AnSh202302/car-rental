@@ -1,8 +1,38 @@
-# React + Vite
+# CarSharing Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the CarSharing project! This web application allows users to browse car rental listings, view detailed information about cars, and sort listings by brand and hourly rental price. Users can also add preferred listings to their favorites and view them on the Favorite page.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse car rental listings in the Catalog
+- View detailed information about each car
+- Sort listings by brand and hourly rental price
+- Add preferred listings to the Favorites list
+- View and manage favorite listings on the Favorite page
+
+## Technologies Used
+
+- React
+- React Router DOM
+- Redux and Redux Toolkit
+- Redux Persist
+- Styled-components
+- Axios for API requests
+- React-select for dropdowns
+- Notiflix for notifications
+
+Now you're ready to explore the CarSharing application!
+
+## Libraries Used
+
+- [Notiflix](https://www.npmjs.com/package/notiflix)
+- [Axios](https://www.npmjs.com/package/axios)
+- [React](https://reactjs.org/)
+- [React Router DOM](https://reactrouter.com/)
+- [React-select](https://react-select.com/)
+- [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Redux Persist](https://www.npmjs.com/package/redux-persist)
+- [Styled-components](https://styled-components.com/)
+- [Mui](https://mui.com/material-ui/getting-started/)
+
+Feel free to explore and contribute to the project. Happy coding!

@@ -31,8 +31,6 @@ export const NotFavoriteIcon = styled(FavoriteBorderIcon)({
 
 export const Favorite = styled(FavoriteIcon)({
   color: "#ff0000",
-  width: 100,
-  height: 100,
 });
 
 export const CardMediaStyled = styled(CardMedia)({

@@ -6,14 +6,16 @@ export const favoritesSlice = createSlice({
   initialState: initialState.favorites,
   reducers: {
     setFavorite: (state, { payload }) => {
-      console.log("firstState", state);
-      state.push(payload);
+      const existingCar = state.find((car) => car.id === payload.id);
+      if (!existingCar) {
+        state.push(payload);
+      }
     },
     clearFavorite: (state, { payload }) => {
-      const index = state.indexOf(payload.id);
-      console.log("claerIndex", index);
-      console.log("index", index);
-      state.splice(index, 1);
+      const index = state.findIndex((car) => car.id === payload.id);
+      if (index !== -1) {
+        return state.filter((car) => car.id !== payload.id);
+      }
     },
   },
 });

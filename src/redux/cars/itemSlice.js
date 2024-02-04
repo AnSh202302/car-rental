@@ -17,7 +17,6 @@ export const itemsSlice = createSlice({
     builder
       .addCase(getItems.pending, handlePending)
       .addCase(getItems.fulfilled, (state, { payload }) => {
-        console.log("first", state.items);
         state.isLoading = false;
         state.error = null;
         state.items = payload;
@@ -25,7 +24,6 @@ export const itemsSlice = createSlice({
       .addCase(getItems.rejected, handleRejected)
       .addCase(getAllItems.pending, handlePending)
       .addCase(getAllItems.fulfilled, (state, { payload }) => {
-        console.log("first", state.items);
         state.isLoading = false;
         state.error = null;
         state.allItems = payload;

@@ -22,6 +22,7 @@ const CarCard = ({ handleOpen, items, open }) => {
 
   const favorite = useSelector((state) => state.favorites);
   const [favoritesState, setFavoritesState] = useState({});
+
   const isFavorite = (car) => favoritesState[car.id] || false;
 
   const getFormattedAddress = (address) => {

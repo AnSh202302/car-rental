@@ -6,7 +6,7 @@ import CarModal from "../../components/Modal";
 import { Button, Typography } from "@mui/material";
 import CarCard from "../../components/CarCard";
 import Dropdown from "../../components/Dropdown";
-import { CatalogSection, WrapperNotFound } from "../Catalog/Catalog.styled";
+import { SectionStyled, WrapperNotFound } from "../Catalog/Catalog.styled";
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -21,13 +21,10 @@ const Catalog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
 
-  console.log(allItems);
-
   const filteredCars =
     selected === "Car brand" || !selected
       ? items
       : allItems.filter((item) => item.make === selected);
-  console.log(filteredCars);
 
   useEffect(() => {
     dispatch(getItems({ currentPage, limit }));
@@ -54,7 +51,7 @@ const Catalog = () => {
   };
 
   return (
-    <CatalogSection>
+    <SectionStyled>
       <Dropdown setCurrentPage={setCurrentPage} />
       {filteredCars.length > 0 ? (
         <CarCard handleOpen={handleOpen} items={filteredCars} open={open} />
@@ -83,7 +80,7 @@ const Catalog = () => {
         handleClose={handleClose}
         selectedCar={selectedCar}
       />
-    </CatalogSection>
+    </SectionStyled>
   );
 };
 export default Catalog;

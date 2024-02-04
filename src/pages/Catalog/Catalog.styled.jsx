@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const CatalogSection = styled("section")({
+export const SectionStyled = styled("section")({
   padding: "100px 20px 40px 20px",
   "&>div": {
     display: "flex",

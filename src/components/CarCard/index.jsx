@@ -21,13 +21,21 @@ const CarCard = ({ handleOpen, items, open }) => {
   const dispatch = useDispatch();
 
   const favorite = useSelector((state) => state.favorites);
-  const [favoritesState, setFavoritesState] = useState({});
+  const [favoritesState, setFavoritesState] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || {}
+  );
 
   const isFavorite = (car) => favoritesState[car.id] || false;
 
   const getFormattedAddress = (address) => {
     const parts = address.split(", ");
     return `${parts[1]} | ${parts[2]}`;
+  };
+
+  const updateFavoritesState = (car, isFavorite) => {
+    const updatedState = { ...favoritesState, [car.id]: isFavorite };
+    localStorage.setItem("favorites", JSON.stringify(updatedState));
+    setFavoritesState(updatedState);
   };
 
   useEffect(() => {
@@ -39,18 +47,10 @@ const CarCard = ({ handleOpen, items, open }) => {
     const index = favorite.findIndex((item) => item.id === car.id);
     if (index === -1) {
       dispatch(setFavorite(car));
-      setFavoritesState((prevState) => {
-        const newState = { ...prevState, [car.id]: true };
-        localStorage.setItem("favorites", JSON.stringify(newState));
-        return newState;
-      });
+      updateFavoritesState(car, true);
     } else {
       dispatch(clearFavorite(car));
-      setFavoritesState((prevState) => {
-        const newState = { ...prevState, [car.id]: false };
-        localStorage.setItem("favorites", JSON.stringify(newState));
-        return newState;
-      });
+      updateFavoritesState(car, false);
     }
   };
 

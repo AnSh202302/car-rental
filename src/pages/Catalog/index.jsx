@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllItems, getItems } from "../../redux/cars/operations";
 import CarModal from "../../components/Modal";
-// import { getError, getIsLoading } from "../redux/selectors";
+import { getError, getIsLoading } from "../../redux/selectors";
 import { Button, Typography } from "@mui/material";
 import CarCard from "../../components/CarCard";
 import Dropdown from "../../components/Dropdown";
@@ -13,8 +13,8 @@ const Catalog = () => {
   const items = useSelector((state) => state.cars.items);
   const allItems = useSelector((state) => state.cars.allItems);
   const selected = useSelector((state) => state.selected);
-  // const isLoading = useSelector(getIsLoading);
-  // const error = useSelector(getError);
+  const isLoading = useSelector((state) => state.cars.isLoading);
+  const error = useSelector(getError);
 
   const [open, setOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState([]);
@@ -53,7 +53,7 @@ const Catalog = () => {
   return (
     <SectionStyled>
       <Dropdown setCurrentPage={setCurrentPage} />
-      {filteredCars.length > 0 ? (
+      {!isLoading && !error && filteredCars.length > 0 ? (
         <CarCard handleOpen={handleOpen} items={filteredCars} open={open} />
       ) : (
         <WrapperNotFound>

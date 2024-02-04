@@ -29,6 +29,7 @@ const Favorites = () => {
       dispatch(setFavorite(car));
     });
   }, [storageIDTrue, allItems, dispatch]);
+
   const handleClose = () => {
     setSelectedCar(null);
     setOpen(false);

@@ -12,11 +12,6 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cars.items);
   const selected = useSelector((state) => state.selected);
-
-  const filteredCars =
-    selected === "Car brand" || !selected
-      ? items
-      : items.filter((item) => item.make === selected);
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
 
@@ -24,6 +19,11 @@ const Catalog = () => {
   const [selectedCar, setSelectedCar] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
+
+  const filteredCars =
+    selected === "Car brand" || !selected
+      ? items
+      : items.filter((item) => item.make === selected);
 
   useEffect(() => {
     dispatch(getItems({ currentPage, limit }));
@@ -37,27 +37,29 @@ const Catalog = () => {
     setSelectedCar(null);
     setOpen(false);
   };
+  const handleBack = () => {
+    setCurrentPage(currentPage - 1);
+    window.scrollTo({ top: 0 });
+  };
+  const handleLoadMore = () => {
+    setCurrentPage(currentPage + 1);
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <CatalogSection>
       <Dropdown />
-      {filteredCars && <CarCard handleOpen={handleOpen} items={filteredCars} />}
+      {filteredCars && (
+        <CarCard handleOpen={handleOpen} items={filteredCars} open={open} />
+      )}
       <div>
         {currentPage > 1 && (
-          <Button
-            variant="outlined"
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
+          <Button variant="outlined" onClick={handleBack}>
             Back
           </Button>
         )}
         {filteredCars.length === limit && (
-          <Button
-            variant="outlined"
-            onClick={() => {
-              setCurrentPage(currentPage + 1);
-              window.scrollTo({ top: 0 });
-            }}
-          >
+          <Button variant="outlined" onClick={handleLoadMore}>
             Load More
           </Button>
         )}

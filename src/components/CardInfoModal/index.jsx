@@ -9,7 +9,6 @@ const CardInfo = ({ item }) => {
     return parts;
   };
   const allConditions = getFormattedRentalConditions(item.rentalConditions);
-  console.log(allConditions);
 
   return (
     <div>

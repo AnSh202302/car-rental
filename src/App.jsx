@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home";
-import Catalog from "./pages/Catalog";
+import Home from "./pages/Home/Home";
+import Catalog from "./pages/Catalog/Catalog";
 import Favorites from "./pages/Favorites";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
@@ -11,16 +10,14 @@ function App() {
     <>
       <Header />
       <main>
-        <section style={{ padding: 40 }}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="catalog" element={<Catalog />} />
-              <Route path="favorites" element={<Favorites />} />
-              <Route path="*" element={<Home />} />
-            </Route>
-          </Routes>
-        </section>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="catalog" element={<Catalog />} />
+            <Route path="favorites" element={<Favorites />} />
+            <Route path="*" element={<Home />} />
+          </Route>
+        </Routes>
       </main>
     </>
   );
